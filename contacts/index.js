@@ -30,5 +30,28 @@ router.post('/contacts', (req, res) => {
 
 })
 
+//3. GET /contact/:id API to get contact information
+router.get('/contacts/:id', (req, res) => {
+    var id = req.params.id
+    for(var i=0 ; i<Listname.length ; i++)
+    {
+        if(Listname[i].id == id)
+        {
+            res.json(Listname[i])
+        }
+    }
+})
+//4. PUT /contact/:id API to update contact information
+router.put('/contacts/:id', (req, res) => {
+    var id = req.params.id
+    for(var i=0 ; i<Listname.length ; i++)
+    {
+        if(Listname[i].id == id)
+        {
+                Listname[i] = req.body
+                res.json("Listname Update Succeed")
+        }
+    }
+})
 ///
 module.exports = router
