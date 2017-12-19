@@ -53,5 +53,22 @@ router.put('/contacts/:id', (req, res) => {
         }
     }
 })
-//test//
+//5. DELETE /contacts/:id API to remove contact from list
+router.delete('/contacts/:id', (req, res) => {
+    var id = req.params.id
+    Listname.splice(id, 1)
+    res.json("Delete Succeed ")
+})
+//6. GET /contacts?name= API to search contact by name
+router.get('/contacts/search/:name',(req,res) => {
+    var name = req.params.name
+    for(var i=0 ; i<Listname.length ; i++)
+    {
+        if(Listname[i].name == name )
+        {
+            res.json(Listname[i])
+        }
+    }
+})
+
 module.exports = router
